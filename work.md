@@ -11,31 +11,15 @@ I build products for the web, from the first idea to production, with a soft spo
 
 <p class="meta">Product Engineer · Cologne, Germany · 2022 – present</p>
 
-[epilot](https://epilot.cloud) is the energy XRM: one platform for energy suppliers, grid operators and solution providers in Germany and Austria to run sales, service and new energy products end to end.
+At [epilot](https://epilot.cloud), the energy XRM for energy suppliers and grid operators, I work on how customers set up and evolve their platform.
 
-### Blueprints & Marketplace
+- **[Blueprints](https://epilot.cloud/anwendungsbereiche/blueprints/) & Marketplace:** ready-made use cases customers install in minutes, and the engine that installs and syncs them from sandbox to production.
+- **Configuration Hub:** comparing, snapshotting and restoring configuration across organisations, plus an org health dashboard.
+- **Performance:** micro-frontend bundles and [a > 70% speed-up with Server-Timing](/2024/01/07/how-using-server-timing-api-helped-bring-70-perf-improvement/).
+- **Search:** entity search and filtering in epilot360, [umlauts included](/2024/02/12/the-u-u-conundrum/).
+- **AI:** agent-assisted blueprint updates.
 
-[Blueprints](https://epilot.cloud/anwendungsbereiche/blueprints/) package a complete use case (schemas, journeys, workflows, automations, templates and more) so customers can install it in minutes instead of building it from scratch.
-
-- Built the platform-level Blueprint Marketplace and the install engine behind it, which resolves dependencies between hundreds of resources and installs them in the right order.
-- Sandbox → production sync: customers build in a sandbox and promote changes to production, with drift detection and merge policies for resources that were changed on both sides.
-- Visibility and safety around installs: sync history with retries for failed runs, a resource tree that shows how everything in a blueprint fits together, health checks, and protected blueprints that customers can update without breaking their own changes.
-- Working on AI-assisted blueprint updates, where an agent plans an update, asks about conflicts and applies it.
-
-### Configuration Hub
-
-- Tools to compare configuration across organisations, take snapshots and restore earlier states.
-- An org health dashboard that surfaces broken or risky configuration before customers run into it.
-- Fine-grained permissions for configuration management.
-
-### Platform & performance
-
-- Part of the team that set up epilot's micro-frontend architecture. Added brotli compression to every micro-frontend bundle and later audited bundle sizes across the platform.
-- [Used the Server-Timing API to bring a > 70% performance improvement](/2024/01/07/how-using-server-timing-api-helped-bring-70-perf-improvement/) and open-sourced [lambda-server-timing](https://www.npmjs.com/package/lambda-server-timing) along the way.
-- Search and filtering across entities in epilot360 with React and Elasticsearch, including [Unicode normalisation for umlauts](/2024/02/12/the-u-u-conundrum/) and the noisy-neighbour problem on a shared cluster.
-- Moved infrastructure setup to a declarative approach by [running Terraform inside AWS Lambda](/2024/04/01/til-tf-plugin-cache/).
-
-<p class="meta">TypeScript · React · Svelte · Node.js · AWS Lambda · DynamoDB · Elasticsearch · Terraform</p>
+<p class="meta">TypeScript · React · Svelte · Node.js · AWS · Elasticsearch · Terraform</p>
 
 ## Before epilot
 
