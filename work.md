@@ -17,7 +17,6 @@ At [epilot](https://epilot.cloud), the energy XRM for energy suppliers and grid 
 - **Configuration Hub:** comparing, snapshotting and restoring configuration across organisations, plus an org health dashboard.
 - **Performance:** micro-frontend bundles and [a > 70% speed-up with Server-Timing](/2024/01/07/how-using-server-timing-api-helped-bring-70-perf-improvement/).
 - **Search:** entity search and filtering in epilot360, [umlauts included](/2024/02/12/the-u-u-conundrum/).
-- **AI:** agent-assisted blueprint updates.
 
 <p class="meta">TypeScript · React · Svelte · Node.js · AWS · Elasticsearch · Terraform</p>
 
