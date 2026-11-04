@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<section class="intro">
+  <img class="avatar" src="https://github.com/NishuGoel.png?size=240" alt="Nishu Goel" width="96" height="96">
+  <h1>Nishu Goel</h1>
+  <p class="lede">Product Engineer at epilot. Web Google Developer Expert and Microsoft MVP. I write about web performance, Angular, JavaScript and the things I learn building for the web.</p>
+  <p class="links">
+    <a href="https://github.com/NishuGoel">GitHub</a>
+    <a href="https://twitter.com/TheNishuGoel">Twitter</a>
+    <a href="https://www.linkedin.com/in/nishu-goel/">LinkedIn</a>
+    <a href="{{ '/speaking/' | relative_url }}">Talks</a>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </p>
+</section>
+
+<section class="writing">
+  <h2>Writing</h2>
+  {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {% for y in years %}
+  <h3 class="year">{{ y.name }}</h3>
+  <ul class="post-index">
+    {% for post in y.items %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><time>{{ post.date | date: "%b %-d" }}</time></li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</section>
