@@ -1,18 +1,35 @@
 ---
 layout: default
 ---
-<section class="intro">
-  <img class="avatar" src="https://github.com/NishuGoel.png?size=240" alt="Nishu Goel" width="96" height="96">
-  <h1>Nishu Goel</h1>
-  <p class="lede">Product Engineer at epilot. Web Google Developer Expert and Microsoft MVP. I write about web performance, Angular, JavaScript and the things I learn building for the web.</p>
-  <p class="links">
-    <a href="https://github.com/NishuGoel">GitHub</a>
-    <a href="https://twitter.com/TheNishuGoel">Twitter</a>
-    <a href="https://www.linkedin.com/in/nishu-goel/">LinkedIn</a>
-    <a href="{{ '/speaking/' | relative_url }}">Talks</a>
-    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-  </p>
-</section>
+<article class="profile">
+  <figure class="hero">
+    <img src="{{ '/assets/img/hero.jpg' | relative_url }}" alt="Nishu Goel speaking at GDG DevFest Bangalore 2022" width="1024" height="576">
+    <figcaption><span>DevFest 2022 · Bangalore · <a href="{{ '/speaking/' | relative_url }}">talks</a></span></figcaption>
+  </figure>
+
+  <div class="profile-body">
+    <p class="kicker">unravelweb.dev</p>
+    <h1>Nishu Goel</h1>
+    <p class="role">Product Engineer</p>
+
+    <p>Product Engineer at <a href="https://epilot.cloud">epilot.cloud</a>, building the platform for the new energy world. Web Google Developer Expert and Microsoft MVP, author of <a href="https://www.amazon.com/dp/B07SVHF2SJ">Step-by-Step Angular Routing</a>, and contributor to the <a href="https://almanac.httparchive.org/en/2021/">Web Almanac 2021</a>.</p>
+    <p>I care about fast, resilient web apps. I speak about web performance at conferences like <a href="https://youtu.be/2djPW7us9VI">performance.now()</a>, Web Directions and WebExpo, and write about what I learn along the way.</p>
+
+    <p class="actions">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/nishu-goel/">Get in touch <span aria-hidden="true">→</span></a>
+      <a class="btn" href="{{ '/speaking/' | relative_url }}">View talks</a>
+    </p>
+
+    <div class="feature">
+      <img src="{{ '/assets/img/book.jpg' | relative_url }}" alt="Step-by-Step Angular Routing book cover" width="120" height="196">
+      <div>
+        <h2>Step-by-Step Angular Routing</h2>
+        <p>Learn to build client-side and single-page apps with Angular routing and navigation. Foreword by Stephen Fluin.</p>
+        <a class="btn btn-small" href="https://www.amazon.com/dp/B07SVHF2SJ">Get the book</a>
+      </div>
+    </div>
+  </div>
+</article>
 
 <section class="writing">
   <h2>Writing</h2>
