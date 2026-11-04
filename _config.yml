@@ -1,0 +1,13 @@
+title: Nishu Goel
+description: Product Engineer @epilot, Web Google Developer Expert, Microsoft MVP
+url: https://unravelweb.dev
+theme: minima
+plugins: [jekyll-feed, jekyll-seo-tag, jekyll-sitemap, jekyll-redirect-from]
+minima:
+  social_links:
+    github: NishuGoel
+    twitter: TheNishuGoel
+    linkedin: nishu-goel
+header_pages: [oss.md, speaking.md, work.md, page.md]
+show_excerpts: true
+exclude: [README.md, Gemfile, Gemfile.lock]
