@@ -8,6 +8,6 @@ minima:
     github: NishuGoel
     twitter: TheNishuGoel
     linkedin: nishu-goel
-header_pages: [oss.md, speaking.md, work.md, page.md]
+header_pages: [oss.md, speaking.md, work.md]
 show_excerpts: true
 exclude: [README.md, Gemfile, Gemfile.lock]
