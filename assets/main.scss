@@ -86,3 +86,8 @@ blockquote { border-left: 3px solid var(--accent); color: var(--muted); font-sty
 pre, code { background: var(--code); border-color: var(--line); font: 14px var(--mono); }
 pre { border-radius: 8px; padding: 14px 16px; }
 .highlight, .highlight pre { background: var(--code); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+.post-content h3:first-child { margin-top: 8px; }
+.post-content h3 a { text-decoration: none; }
+.post-content h3 a:hover { text-decoration: underline; }
+.post-content .meta { font: 13px var(--mono); color: var(--muted); letter-spacing: .03em; }
