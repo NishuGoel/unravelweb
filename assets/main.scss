@@ -22,7 +22,7 @@ a, a:visited { color: inherit; text-decoration: underline; text-decoration-color
 a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 .site-header { border: 0; min-height: 0; padding: 24px 0 0; }
-.site-title, .site-title:visited { font: 500 14px var(--mono); letter-spacing: .02em; color: var(--fg); text-decoration: none; }
+.site-title, .site-title:visited { line-height: 56px; font: 500 14px var(--mono); letter-spacing: .02em; color: var(--fg); text-decoration: none; }
 .site-nav { line-height: 56px; }
 .site-nav .page-link { color: var(--muted); font-size: 15px; text-decoration: none; }
 .site-nav .page-link:hover { color: var(--fg); }
