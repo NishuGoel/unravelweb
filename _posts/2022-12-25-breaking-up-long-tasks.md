@@ -161,7 +161,7 @@ Read more here 👇🏻
 
 
 
-<iframe class="wp-embedded-content" data-secret="of8UdvCvUj" frameborder="0" height="338" marginheight="0" marginwidth="0" sandbox="allow-scripts" scrolling="no" security="restricted" src="https://calendar.perfplanet.com/2022/breaking-up-long-tasks/embed/#?secret=of8UdvCvUj" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" title="“Breaking up long tasks” — Web Performance Calendar" width="600"></iframe>
+
 
 
 

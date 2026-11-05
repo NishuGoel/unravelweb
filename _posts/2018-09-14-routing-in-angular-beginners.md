@@ -21,19 +21,62 @@ To do this in Angular, we use the concept of Routes and navigation pages. Let us
 
 To start routing, the very first step is to import ***RouterModule***from ***@angular/router***Inside app.module.ts,
 
-https://gist.github.com/NishuGoel/549d53931c7ff9005c18359a03330bd5
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent, MessageComponent
+  ],
+  imports: [
+    BrowserModule, RouterModule  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
 After importing the router module, suppose we have created two components ***main.component.ts*** and ***notmain.component.ts***; Make sure adding these in the module.ts file.
 
-https://gist.github.com/NishuGoel/0b7edf147757bb853122077b98ef9bb7
+```typescript
+import {MainComponent} from './main.component';
+import {NotmainComponent} from './notmain.component';
+
+@NgModule({
+  declarations: [
+    AppComponent, MainComponent, NotmainComponent
+  ],
+  imports: [ 
+    BrowserModule, RouterModule  
+  ],
+```
 
 Now coming back to the import statement of RouterModule, we want to add a definition of how our route should look like. To do that, we need to add a method ***forRoot()***which accepts the array of routes. It will look like:
 
-https://gist.github.com/NishuGoel/3d9e563e742b70407dadfbc7bb2b3dfa
+```typescript
+imports: [
+    BrowserModule, RouterModule.forRoot([
+    {
+      path: 'notmain',
+      component: NotmainComponent
+    },  
+    {
+      path: '',
+      component: MainComponent
+    }  
+    ])
+  ],
+```
 
 This renders the component we loaded into the router-outlet tag in the HTML file of app.component.
 
-https://gist.github.com/NishuGoel/0efa054ca32eaa2777d4c7bba595e316
+```html
+<router-outlet></router-outlet>
+```
 
 This tag displays components which the component property of the RouterModule tells it to.  
 The next step is to go to the HTML file of ***NotmainComponent***and,

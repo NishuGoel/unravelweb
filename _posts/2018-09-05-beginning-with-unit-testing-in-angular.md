@@ -53,7 +53,13 @@ Now let us see how to run tests in Visual Studio Code.
 
 **Step 3.** Now, Karma will look for a spec.ts file, so go to app and under that, create a new file **test.spec.ts**
 
-https://gist.github.com/NishuGoel/30d9950ef8644b8915d58aa46f750d55
+```typescript
+describe('first tests', () => {
+  it('should be true', () => {
+    expect(true).toBe(true);
+  })
+})
+```
 
 It will display as follows on the command line:
 

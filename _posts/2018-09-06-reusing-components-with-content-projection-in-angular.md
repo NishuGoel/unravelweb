@@ -15,7 +15,27 @@ For example, there is a dialog box which we can use with different pieces of con
 
 Before going on to create one, we need to understand that since it is a common component that can be used anywhere, we need to create this new file inside the common directory.
 
-https://gist.github.com/NishuGoel/56f721dda79c15bb0c8406e014984331
+```typescript
+import{Component, Input} from '@angular/core';
+
+@Component({
+  selector: 'collapse',
+  template: `
+  <div (click) = 'toggleContent()' class ='well pointable'>
+  <h2>{{title}}</h2></div>
+  <ng-content *ngIf ="visible"></ng-content>       //To make content projection work
+
+  `
+})
+
+export class CollapseComponent{
+  @Input title: string;
+  visible: boolean = true;
+  toggleContent(){
+  this.visible = !this.visible;
+  }
+}
+```
 
 Here, we have created a new component collapse.component.ts and to make content projection work in it, we need to use the tag <ng-content> inside the template. However, we may want to add the toggle functionality to our content projection feature. To do that, we set it to visible using the structure directive \*ngIf.
 

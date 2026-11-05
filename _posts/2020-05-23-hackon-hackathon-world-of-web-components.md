@@ -17,7 +17,7 @@ The talk streamed live on youtube with discussions taking place in Discord and t
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="422" src="https://www.youtube.com/embed/gpuMx8XOoQY?start=440&amp;feature=oembed" title="The World of Web Components By Nishu Goel, Google Developer Expert | HackOn Hackathon" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=gpuMx8XOoQY&amp;t=440s" data-id="gpuMx8XOoQY" data-start="440" style="background-image:url(https://i.ytimg.com/vi/gpuMx8XOoQY/hqdefault.jpg)"><span>The World of Web Components By Nishu Goel, Google Developer Expert | HackOn Hackathon</span></a>
 
 
 

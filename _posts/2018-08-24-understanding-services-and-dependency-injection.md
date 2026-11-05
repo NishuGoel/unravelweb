@@ -29,7 +29,16 @@ Steps to build a service:
 2) Use a decorator to define it  
 3) Import it
 
-https://gist.github.com/NishuGoel/d59b48ddfcfbf0d882eb34925ce26718
+```typescript
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class ProductService{
+  getProducts(){
+  return;
+  }
+}
+```
 
 We have built a service, but remember our service is just a normal class unless we register it in the module.
 
@@ -37,22 +46,64 @@ Angular injects services with root injector(available to all the components) or 
 
 Let us register the service with the root injector like this:
 
-https://gist.github.com/NishuGoel/1803b5df3c4a9b25577ada9db6b6284b
+```typescript
+import {Injectable} from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService{
+  getProducts(){}
+}
+```
 
 This is how we can access this service from any component or any other service now.  
 In case, you want to access this service from only one component, this is how you do this.
 
 In the product.component.ts,
 
-https://gist.github.com/NishuGoel/6ac8d024336e257a501dc8b0c7da82d9
+```typescript
+import {Component} from '@angular/core';
+
+@Component({
+  template: ``
+  providers: [ProductService]
+})
+export class ProductComponent{}
+```
 
 For Injecting the service now, the angular injector uses a constructor to inject an instance of the class. Like this,
 
-https://gist.github.com/NishuGoel/39fd84bc60868bd48c50ab1e20f15261
+```typescript
+import {Component} from '@angular/core';
+
+@Component({
+  template: ``
+  providers: [ProductService]
+})
+export class ProductComponent{
+  constructor(private productService: productService){}
+}
+```
 
 Now finally to use our service, let us call it.
 
-https://gist.github.com/NishuGoel/f8e9a8f2dfd09b30b1f1f2f77882bc63
+```typescript
+import {Component} from '@angular/core';
+
+@Component({
+  template: ``
+  providers: [ProductService]
+})
+export class ProductComponent implements OnInit{
+  constructor(private productService: productService){}
+
+  ngOnInit(){
+  this.products = this.productService.getProducts();
+  this.filteredProducts = this.products;
+  }
+}
+```
 
 And we are done creating our service and injecting it.
 {% endraw %}

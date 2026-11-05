@@ -31,13 +31,38 @@ In the **index.html**, insert <link> element *(It will appear like given in th
 
 Your index.html must look like this now.
 
-https://gist.github.com/NishuGoel/8f56fa4dc3bfe26eab953421c7f587f2
+```html
+[<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pract</title>
+  <base href="/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha3-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+```
 
 ### Now, to use this bootstrap inside one of our components, lets take this example.
 
 In our app.component.html,i.e.,
 
-https://gist.github.com/NishuGoel/22c561d3f08d5efc3fea94cba2324f3e
+```html
+<div>
+    <button> Hey </button>
+    <h1>Welcome to Angular</h1>
+    <table>
+        <tr>
+            <td> No bootstrap</td>
+        </tr>
+    </table>
+</div>
+```
 
 The result shows as follows if bootstrap framework is not applied.
 
@@ -47,7 +72,17 @@ Without bootstrap
 
 However, when you apply the bootstrap framework in your app.component.html, i.e.,
 
-https://gist.github.com/NishuGoel/8310fdd12cde1587bd33e380482c9c1f
+```html
+<div class = 'jumbotron'>
+    <button class = 'btn btn-info'> Hey </button>
+    <h1>Welcome to Angular</h1>
+    <table class = 'table'>
+        <tr>
+            <td> With bootstrap</td>
+        </tr>
+    </table>
+</div>
+```
 
 it appears like:
 

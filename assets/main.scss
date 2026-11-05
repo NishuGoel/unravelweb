@@ -85,3 +85,18 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
 .post-content h3 a { text-decoration: none; }
 .post-content h3 a:hover { text-decoration: underline; }
 .post-content .meta { font: 13px var(--mono); color: var(--muted); letter-spacing: .03em; }
+
+/* lite YouTube */
+.yt { display: block; position: relative; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; overflow: hidden;
+      background: #000 center / cover no-repeat; margin: 0 0 24px; text-decoration: none; }
+a.yt::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.55), transparent 40%, rgba(0,0,0,.25)); }
+a.yt::after { content: ""; position: absolute; left: 50%; top: 50%; width: 68px; height: 48px; transform: translate(-50%, -50%);
+      border-radius: 14px; background: rgba(0,0,0,.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='white'/%3E%3C/svg%3E") center / 28px no-repeat; transition: background-color .15s; }
+a.yt:hover::after { background-color: #c00; }
+a.yt span { position: absolute; top: 14px; left: 18px; right: 18px; color: #fff; font: 500 15px/1.4 var(--sans); }
+
+/* 404 */
+.not-found { text-align: center; padding: 64px 0; }
+.not-found .code { font: 500 14px var(--mono); letter-spacing: .14em; color: var(--muted); }
+.not-found h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 700; letter-spacing: -0.03em; margin: 8px 0 12px; }
+.not-found .actions { justify-content: center; }

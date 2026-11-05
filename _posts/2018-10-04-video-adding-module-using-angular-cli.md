@@ -25,7 +25,7 @@ This video explains the whole process in detail.
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="422" src="https://www.youtube.com/embed/pn_lW28-oVE?feature=oembed" title="Angular Module using CLI" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=pn_lW28-oVE" data-id="pn_lW28-oVE" data-start="" style="background-image:url(https://i.ytimg.com/vi/pn_lW28-oVE/hqdefault.jpg)"><span>Angular Module using CLI</span></a>
 
 
 

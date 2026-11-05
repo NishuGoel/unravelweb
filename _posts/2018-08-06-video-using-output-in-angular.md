@@ -11,7 +11,7 @@ In this video, you will learn using @Output decorator in Angular. This decorator
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/Xau8-VVXw9Y?feature=oembed" title="How to use Output for Component Communication in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=Xau8-VVXw9Y" data-id="Xau8-VVXw9Y" data-start="" style="background-image:url(https://i.ytimg.com/vi/Xau8-VVXw9Y/hqdefault.jpg)"><span>How to use Output for Component Communication in Angular</span></a>
 
 
 

@@ -79,7 +79,7 @@ I have shared more info on my journey to epilot as a full-stack developer in my 
 
 
 
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" height="152" src="https://open.spotify.com/embed/episode/2C4KYDkRroA6Uc2QevdhLt?si=ap_yhzZKTuuECCeAc47wCA&amp;utm_source=oembed" style="border-radius: 12px" title="Spotify Embed: #17 Unravelling The Web w/ Nishu Goel" width="100%"></iframe>
+<iframe src="https://open.spotify.com/embed/episode/2C4KYDkRroA6Uc2QevdhLt?si=ap_yhzZKTuuECCeAc47wCA&amp;utm_source=oembed" title="Spotify Embed: #17 Unravelling The Web w/ Nishu Goel" loading="lazy" style="width:100%;height:152px;border:0;border-radius:12px"></iframe>
 
 
 

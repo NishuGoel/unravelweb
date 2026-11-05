@@ -46,7 +46,19 @@ Now to finally set up the configurations for cloud firestore inside our project,
 
 Paste into ***src/environments/environments.ts*.**Do the same for ***environments.prod.ts.***It should look like this:
 
-<https://gist.github.com/NishuGoel/470fe6bf00ba26474026e2ddd80ee4c6>
+```
+export const environment = {
+    production: false,
+    firebase: {
+        apiKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        authDomain: 'mydemoprojectt.firebaseapp.com',
+        databaseURL: 'https://mydemoprojectt.firebaseio.com',
+        projectId: 'mydemoprojectt',
+        storageBucket: 'mydemoproject.appspot.com',
+        messagingSenderId: 'ZZZZZZZZZZZZ'
+    }
+};
+```
 
 ![](/assets/img/cd8110-1.png)
 
@@ -54,13 +66,56 @@ Now, importing the modules and updating the component.ts, it should look like:
 
 **app.module.ts**
 
-<https://gist.github.com/NishuGoel/6c9079469fde418cdf725e6ce52b7b3f>
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+
+@NgModule({
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
 ![](/assets/img/40a895-2.png)
 
 **app.component.ts**
 
-<https://gist.github.com/NishuGoel/3d0ab2c95ad900cd7a8f846e6d4b94db>
+```
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { AngularFirestore } from 'angularfire2/firestore';
+
+@Component({
+    selector: 'app-root',
+    template: `
+        <ul>
+            <li *ngFor="let d of data | async">
+                <pre>{{ d | json }}</pre>
+            </li>
+        </ul>
+    `
+})
+export class AppComponent {
+    public data: Observable<any[]>;
+
+    constructor(db: AngularFirestore) {
+        this.data = db.collection('/data').valueChanges();
+    }
+}
+```
 
 ![](/assets/img/f423db-3.png)
 

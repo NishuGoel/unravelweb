@@ -41,21 +41,205 @@ Create a new application on **Auth0**, set it up as Single Page Application, and
 
 Finally, configuring the Apollo client to interact with Hasura Engine, we create a new GraphQL module. Like this:
 
-https://gist.github.com/NishuGoel/1f69956630d198bdfd370da673c436d5
+```typescript
+import { NgModule } from '@angular/core';
+
+import {HttpClient, HttpHeaders, HttpClientModule} from '@angular/common/http';
+import {Apollo, ApolloModule} from 'apollo-angular';
+import {HttpLink, HttpLinkModule} from 'apollo-angular-link-http';
+import {InMemoryCache} from 'apollo-cache-inmemory';
+import {stringify} from '@angular/compiler/src/util';
+
+
+@NgModule({
+  exports:[
+    HttpClientModule, ApolloModule, HttpLinkModule
+
+  ]
+})
+export class GraphQLModule {
+  constructor(apollo:Apollo, httpLink: HttpLink){
+    const uri = 'https://hasura-app.herokuapp.com/vlalphal/graphql';
+
+    const authHeader = new HttpHeaders()
+    .set('X-HASURA-ACCESS-KEY', 'secret')
+    .set('ContentType', 'application/json')
+    .set('Authorisation', `Bearer ${localStorage.getItem('access_token')}`)
+    .set('X-Hasura-Role', 'user')
+    .set('X-Hasura-User-Id', stringify(localStorage.getItem('userId')))
+
+    console.log(localStorage.getItem('user_id'));
+    const http = httpLink.create({uri, headers: authHeader});
+
+    apollo.create({
+      link: http,
+      cache: new InMemoryCache()
+    });
+  }
+ }
+```
 
 We can further organize our application create more components providing queries inside a query.ts file.
 
 By the end, your code should look like this:
 
-https://gist.github.com/NishuGoel/67366047787534cecfbb7f64b467a66d
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+
+  constructor(public auth: AuthService) {
+    auth.handleAuthentication();
+  }
+
+  ngOnInit() {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.auth.renewSession();
+    }
+  }
+
+}
+```
 
 **app.component.html**
 
-https://gist.github.com/NishuGoel/1363dd2c5b720f3491cb68a68fe747ec
+```html
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Auth0 - Angular</a>
+
+      <button
+        class="btn btn-primary btn-margin"
+        routerLink="/">
+          Home
+      </button>
+
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="!auth.isAuthenticated()"
+        (click)="auth.login()">
+          Log In
+      </button>
+
+      <button
+        class="btn btn-primary btn-margin"
+        *ngIf="auth.isAuthenticated()"
+        (click)="auth.logout()">
+          Log Out
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+```
 
 **app.component.html**
 
 While injecting the service, **auth.service.ts**,
 
-https://gist.github.com/NishuGoel/468f53b3ddcedc9b983c4b29cdd593aa
+```typescript
+// src/app/auth/auth.service.ts
+
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import * as auth0 from 'auth0-js';
+
+@Injectable()
+export class AuthService {
+
+  private _idToken: string;
+  private _accessToken: string;
+  private _expiresAt: number;
+
+  auth0 = new auth0.WebAuth({
+    clientID: 'fcesrulTTieGc3TEK0PrOaRQeNrqF12u',
+    domain: 'nishugoe.auth0.com',
+    responseType: 'code',
+    redirectUri: 'http://localhost:4200/callback',
+    scope: 'openid'
+  });
+
+  constructor(public router: Router) {
+    this._idToken = '';
+    this._accessToken = '';
+    this._expiresAt = 0;
+  }
+
+  get accessToken(): string {
+    return this._accessToken;
+  }
+
+  get idToken(): string {
+    return this._idToken;
+  }
+
+  public login(): void {
+    this.auth0.authorize();
+  }
+
+  public handleAuthentication(): void {
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        this.setSession(authResult);
+        this.router.navigate(['/home']);
+      } else if (err) {
+        this.router.navigate(['/home']);
+        console.log(err);
+      }
+    });
+  }
+
+  private setSession(authResult): void {
+    // Set isLoggedIn flag in localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+    // Set the time that the access token will expire at
+    const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+    this._accessToken = authResult.accessToken;
+    this._idToken = authResult.idToken;
+    this._expiresAt = expiresAt;
+  }
+
+  public renewSession(): void {
+    this.auth0.checkSession({}, (err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        this.setSession(authResult);
+      } else if (err) {
+        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+        this.logout();
+      }
+    });
+  }
+
+  public logout(): void {
+    // Remove tokens and expiry time
+    this._accessToken = '';
+    this._idToken = '';
+    this._expiresAt = 0;
+    // Remove isLoggedIn flag from localStorage
+    localStorage.removeItem('isLoggedIn');
+    // Go back to the home route
+    this.router.navigate(['/']);
+  }
+
+  public isAuthenticated(): boolean {
+    // Check whether the current time is past the
+    // access token's expiry time
+    return new Date().getTime() < this._expiresAt;
+  }
+
+}
+```
 {% endraw %}

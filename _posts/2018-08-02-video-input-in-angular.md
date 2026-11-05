@@ -15,7 +15,7 @@ This video describes how to use @Input decorator for component communication in 
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/RpxZsuyEHPk?start=4&amp;feature=oembed" title="How to use Input for Component Communication in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=RpxZsuyEHPk&amp;t=4s" data-id="RpxZsuyEHPk" data-start="4" style="background-image:url(https://i.ytimg.com/vi/RpxZsuyEHPk/hqdefault.jpg)"><span>How to use Input for Component Communication in Angular</span></a>
 
 
 

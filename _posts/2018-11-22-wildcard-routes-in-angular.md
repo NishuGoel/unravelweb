@@ -16,11 +16,31 @@ Inside app-routing.module.ts, we have:
 
 And the code in components looks like:
 
-https://gist.github.com/NishuGoel/6b79325e2b40e39b24a7a4774da00e0c
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-first',
+  template: `<h3>First Component works</h3>`
+})
+
+export class FirstComponent{
+}
+```
 
 **FirstComponent**
 
-https://gist.github.com/NishuGoel/69d6f73af2b10bb8f3d3c716460c9d36
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-second',
+  template: `<h3>Second Component works</h3>`
+})
+
+export class SecondComponent{
+}
+```
 
 **SecondComponent**
 
@@ -39,19 +59,45 @@ Since the wildcard route match every other route, it needs to be mentioned in th
 Generate a new component using,  
 **ng g c PageNotFoundComponent**
 
-https://gist.github.com/NishuGoel/692c7cc891254c707631fa21219f3e82
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-pagenotfound',
+  template: `<p>Page Not Found</p>`
+})
+
+export class PageNotFoundComponent{
+}
+```
 
 PageNotFoundComponent
 
 And now, specify it inside the const routes,
 
-https://gist.github.com/NishuGoel/7aa350098c1b45ab1af85939d1c58cba
+```
+const routes: Routes = [
+{path: 'first', Component: 'FirstComponent'},
+{path: 'second', Component: 'SecondComponent},
+{path: '**', Component: 'PageNotFoundComponent}
+
+;
+```
 
 app-routing.module.ts
 
 Now when we go to the browser, it displays page not found. this is because localhost:4200 is an unknown route because we have not defined it. So to do that, we create another route request in the app-routing.module.ts like this:
 
-https://gist.github.com/NishuGoel/86ecc0ba54dcdef6e69c1f9969897930
+```
+const routes: Routes = [
+
+{path: '', Component: 'FirstComponent'},
+{path: 'first', Component: 'FirstComponent'},
+{path: 'second', Component: 'SecondComponent},
+{path: '**', Component: 'PageNotFoundComponent}
+
+];
+```
 
 This gives us the first default page as the FirstComponent.
 

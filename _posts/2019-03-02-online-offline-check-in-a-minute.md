@@ -107,7 +107,7 @@ Find it here:
 
 
 
-<iframe class="wp-embedded-content" data-secret="6DvrnZ1SAb" height="400" sandbox="allow-scripts" security="restricted" src="https://stackblitz.com/edit/testinternet?embed=1#?secret=6DvrnZ1SAb" title="testinternet - StackBlitz" width="745"></iframe>
+<iframe src="https://stackblitz.com/edit/testinternet?embed=1" title="testinternet - StackBlitz" loading="lazy" style="width:100%;height:420px;border:0;border-radius:12px"></iframe>
 
 
 {% endraw %}

@@ -11,7 +11,7 @@ Learn Services and Dependency Injection in Angular. Injecting services is an imp
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/ep8c8iE-US8?feature=oembed" title="Services and Dependency Injection in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=ep8c8iE-US8" data-id="ep8c8iE-US8" data-start="" style="background-image:url(https://i.ytimg.com/vi/ep8c8iE-US8/hqdefault.jpg)"><span>Services and Dependency Injection in Angular</span></a>
 
 
 

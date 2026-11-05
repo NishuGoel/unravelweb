@@ -19,7 +19,18 @@ A JavaScript Module is a code written in JavaScript which means to organize it a
 
 An NgModule is the use of a module decorated by the decorator ***@NgModule.***The imports array inside the decorator tells Angular that these modules will be needed for the current scenario. This goes like:
 
-https://gist.github.com/NishuGoel/740f711b893002b074c6b556effc8612
+```
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [ 
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+```
 
 An NgModule differs from the JS Modules specifically because unlike JS Modules, NgModules do not have their own file. Also they need the presence of the decorator @NgModule and its metadata.
 

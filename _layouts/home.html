@@ -23,7 +23,7 @@ layout: default
   </div>
 </article>
 
-<section class="writing">
+<section class="writing" id="writing">
   <h2>Writing</h2>
   {% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
   {% for y in years %}

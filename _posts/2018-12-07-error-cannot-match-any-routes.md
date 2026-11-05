@@ -13,7 +13,14 @@ An angular router is the one that makes an angular application a Single-page app
 
 This routing configuration looks like:
 
-https://gist.github.com/NishuGoel/7aa350098c1b45ab1af85939d1c58cba
+```
+const routes: Routes = [
+{path: 'first', Component: 'FirstComponent'},
+{path: 'second', Component: 'SecondComponent},
+{path: '**', Component: 'PageNotFoundComponent}
+
+;
+```
 
 Now when we say the component has to get displayed, we have not specified where the component needs to get displayed. To specify that, ***RouterOutlet*** comes into play.
 

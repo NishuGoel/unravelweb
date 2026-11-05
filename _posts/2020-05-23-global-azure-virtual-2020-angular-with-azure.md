@@ -13,7 +13,7 @@ A demo of this is given here in my talk recording:
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="422" src="https://www.youtube.com/embed/bFHuZdYiTP8?start=13&amp;feature=oembed" title="Angular on Azure" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=bFHuZdYiTP8&amp;t=13s" data-id="bFHuZdYiTP8" data-start="13" style="background-image:url(https://i.ytimg.com/vi/bFHuZdYiTP8/hqdefault.jpg)"><span>Angular on Azure</span></a>
 
 
 

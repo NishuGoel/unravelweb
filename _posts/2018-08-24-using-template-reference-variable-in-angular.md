@@ -15,11 +15,26 @@ A template reference variable is used to give reference to a DOM Element, a comp
 
 This is done ***using a # symbol***inside the template. Let us see how it is done.
 
-https://gist.github.com/NishuGoel/42672fd54bca1f766835cc99e21dbcc6
+```html
+<input type = "text placeholder = "What is your name?" #name>
+<button (click) = display(name)>What is the name? </button>
+```
 
 Inside the typescript file, let us simply display the value of the template reference variable using ***console.log***
 
-https://gist.github.com/NishuGoel/f392a7f696fb573d16390ef73910549d
+```typescript
+import {Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: 'app.component.html'
+})
+export class AppComponent { 
+    display(name: HTMLInputElement){
+      console.log(name.value);
+    }
+}
+```
 
 So this is how we create a template reference variable and use it anywhere inside the template.
 {% endraw %}

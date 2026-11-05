@@ -19,22 +19,99 @@ There are multiple ways to achieve that. This article focuses on the use of **@
 
 Here, we have decorated the message property with the @Input() decorator so that value of the message property can be set from the parent component.
 
-https://gist.github.com/NishuGoel/d9d60bffd9ad81c004e24a1d7055a0fe
+```typescript
+import { Component,Input,OnInit } from '@angular/core';
+
+@Component({
+    selector: 'appchild',
+    template: `<h2>Hi {{message}}</h2>`
+})
+export class ChildComponent  implements OnInit{
+
+    _message: string; 
+    constructor(){
+
+    }   
+    ngOnInit(){
+
+    }
+```
 
 Now, let us modify the parent component AppComponent to pass data to the child component.
 
-https://gist.github.com/NishuGoel/f4381fbb870074df00b09cc6957b3252
+```typescript
+import {Component } from '@angular/core';
+
+@Component({
+    selector: 'my-app',
+    template: `<h1>Hello {{pmessage}}</h1>
+  <appchild [message]="cmessage"></appchild>
+  `
+})
+export class AppComponent  { 
+  
+        pmessage : string = "I am Parent";
+        cmessage : string = "I came from Parent to child";
+    }
+```
 
 Here we are setting the value of the child component’s property message with the help of parent component. To pass a value to the child component, we need to pass the property inside a square bracket and assign its value to any property of the parent component. We are passing the value of **‘cmessage’**property from the parent component to the ‘**message’** property of the child component.
 
 Taking this example to the next level, there might be a situation where we’d need to intercept the data passed from the parent component. To do this, we need to use getter and setter on the input property.  
 We create a property called \_message and using @Input() decorator, create getter and setter for the \_message property.
 
-https://gist.github.com/NishuGoel/718c9b573d9676d65d8123759cecdc2c
+```typescript
+import { Component,Input,OnInit } from '@angular/core';
+
+@Component({
+    selector: 'appchild',
+    template: `<h2>Hi {{message}}</h2>`
+})
+export class ChildComponent  implements OnInit{
+
+    _message: string; 
+    constructor(){
+
+    }   
+    ngOnInit(){
+
+    }
+    @Input()
+    set message(message : string ){
+        this._message = message + "manipulated at child component"; 
+    }
+    get message(){
+        return this._message;
+    }
+```
 
 In the above example, we need to understand that the behavior of the parent component is not changed when we intercept the message. Now let us take another case where if the parent passes empty value, then the child component displays some default value.
 
-<https://gist.github.com/NishuGoel/586d5da00bbc87ec1a78a6b0e70ca725>
+```typescript
+import { Component,Input,OnInit } from '@angular/core';
+
+@Component({
+    selector: 'appchild',
+    template: `<h2>Hi {{message}}</h2>`
+})
+export class ChildComponent  implements OnInit{
+
+    _message: string; 
+    constructor(){
+
+    }   
+    ngOnInit(){
+
+    }
+    @Input()
+    set message(message : string ){
+        this._message = (message && message.trim()) || "I am default message";
+    }
+    get message(){
+        return this._message;
+    }
+}
+```
 
 It checks here if the value passed is an empty string. If yes, we assign the default value for message in the child component.
 

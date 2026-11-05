@@ -34,7 +34,14 @@ In this blogpost, we will learn how to work with **CanActivate** Route Guard. To
 
 Next step is to create an Injectable class which will implement our CanActivate() function
 
-https://gist.github.com/NishuGoel/8d5aa2bfe820b957bb4dfdd57bece6f2
+```
+class RouteGuardDemo implements CanActivate{
+       CanActivate(){
+                console.log("Guard Implemented");
+                return true;
+        }
+}
+```
 
 Since Guard is a service, we need to declare it inside the providers array in the module.
 
@@ -46,7 +53,19 @@ Since Guard is a service, we need to declare it inside the providers array in th
 
 Now to use this guard that we created, we need to use it inside one of the routes. So, suppose we have two components **FirstComponent** and **SecondComponent**, and the user is trying to route from first component to the second component.
 
-https://gist.github.com/NishuGoel/aecdd54722129dd7cc5085a5275d7db7
+```
+
+const routes: Routes = [
+  {path:'first', component:FirstComponent, canActivate: [RouteGuardDemo]},
+  {path:'second', component:SecondComponent},
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
 
 We added our **RouteGuardDemo** to the list of **CanActivate** guards now. Everytime we try to navigate from FirstComponent, the guard gets implemented and we will get a message in our console as “**Guard Implemented**“.  
 Similarly, there are different functionalities for each guard that can be implemented.

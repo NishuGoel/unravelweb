@@ -17,7 +17,22 @@ Whenever working with components, the first step is the calling of the construct
 
 A simple example of the usage of the constructor would be like:
 
-https://gist.github.com/NishuGoel/ff7cf4f278cd9f56eb501a686868cde4
+```
+import {Component} from 'angular2/core';
+import {ValService} from './valService';
+ 
+@Component({
+ selector: ‘app-root’,
+ template: `
+ `
+})
+class AppComponent {
+ value: String;
+ constructor(private _valService: ValService) {
+ this.value = _valService.getValue();
+ }
+}
+```
 
 ### **[Read More on the DotNetTricks Blog](https://www.dotnettricks.com/learn/angular/angular-component-lifecycle-hooks-explained)**
 {% endraw %}

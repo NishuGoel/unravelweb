@@ -13,7 +13,7 @@ Watch this video to learn how to make use of the decorator @ViewChild() for the 
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/r6Pqv674AaA?feature=oembed" title="ViewChild for Component Communication in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=r6Pqv674AaA" data-id="r6Pqv674AaA" data-start="" style="background-image:url(https://i.ytimg.com/vi/r6Pqv674AaA/hqdefault.jpg)"><span>ViewChild for Component Communication in Angular</span></a>
 
 
 

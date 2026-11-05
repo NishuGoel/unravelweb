@@ -153,7 +153,7 @@ This directive that we created here, simply changes the appearance of your DOM e
 
 
 
-<iframe class="wp-embedded-content" data-secret="avOKUbgcOq" height="400" sandbox="allow-scripts" security="restricted" src="https://stackblitz.com/edit/custom-directive-demo?embed=1#?secret=avOKUbgcOq" title="custom-directive-demo - StackBlitz" width="745"></iframe>
+<iframe src="https://stackblitz.com/edit/custom-directive-demo?embed=1" title="custom-directive-demo - StackBlitz" loading="lazy" style="width:100%;height:420px;border:0;border-radius:12px"></iframe>
 
 
 

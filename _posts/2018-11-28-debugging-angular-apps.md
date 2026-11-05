@@ -26,7 +26,25 @@ And if still we aren’t able to figure out the error, GitHub and stack**overflo
 
 Now after we have read the error messages correctly, another approach to debug our angular app is to use the conventional method of using **console.log()** and logging various properties, objects etc. to have a look at them in the JavaScript console in the browser and check their values at different stages in the program. This is obviously not the best approach to debug our application but comes handy many a time.
 
-https://gist.github.com/NishuGoel/c7cb4d94fca191850fd368097979e81b
+```
+import { Directive, ElementRef, Renderer, HostListener } from "@angular/core";
+
+@Directive({
+    selector: '[app-ch-color]'
+})
+export class bgDirective{
+    constructor(private el: ElementRef, private renderer: Renderer){
+        this.changeColor('red');
+    }
+    @HostListener('click') foo(){
+        console.log('Host Element is clicked');
+        this.changeColor('green');
+    }
+    changeColor(color: string){
+        this.renderer.setElementStyle(this.el.nativeElement, 'color', color);  
+    }
+}
+```
 
 Here, console.log will display and check for bug, if any! We will be able to locate the error then.
 

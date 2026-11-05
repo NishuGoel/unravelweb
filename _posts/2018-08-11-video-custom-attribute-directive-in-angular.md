@@ -11,7 +11,7 @@ In this video, learn about Directives in Angular. Directives are used to attach 
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/k--ugX8j2OY?feature=oembed" title="How to Use Custom Attribute Directives in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=k--ugX8j2OY" data-id="k--ugX8j2OY" data-start="" style="background-image:url(https://i.ytimg.com/vi/k--ugX8j2OY/hqdefault.jpg)"><span>How to Use Custom Attribute Directives in Angular</span></a>
 
 
 

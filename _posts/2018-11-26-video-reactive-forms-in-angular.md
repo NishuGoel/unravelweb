@@ -19,7 +19,7 @@ Watch this video on ***bpbonline:***
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/dcC0ZIr0rkU?feature=oembed" title="Reactive Forms in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=dcC0ZIr0rkU" data-id="dcC0ZIr0rkU" data-start="" style="background-image:url(https://i.ytimg.com/vi/dcC0ZIr0rkU/hqdefault.jpg)"><span>Reactive Forms in Angular</span></a>
 
 
 

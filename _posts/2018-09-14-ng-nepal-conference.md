@@ -12,7 +12,7 @@ Here is the event summary in the form of a short video:
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="422" src="https://www.youtube.com/embed/5aPi-fnCQsY?feature=oembed" title="ng-Nepal 2018 Event Summary" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=5aPi-fnCQsY" data-id="5aPi-fnCQsY" data-start="" style="background-image:url(https://i.ytimg.com/vi/5aPi-fnCQsY/hqdefault.jpg)"><span>ng-Nepal 2018 Event Summary</span></a>
 
 
 

@@ -15,11 +15,29 @@ If you are new to forms, understand these [**here**](https://angular.io/guide/f
 
 So, to start with, I assume that you have already created a project using **ng new.**Now, suppose we have created a reactive form using FormGroup.
 
-https://gist.github.com/NishuGoel/e6a6b173daa9e40d2ff02b39225da7f2
+```typescript
+loginForm: FormGroup;
+ngOnInit() 
+	this.loginForm = new FormGroup({
+		email: new FormControl(null),
+		password: new FormControl(null),
+		age: new FormControl(null)
+	});
+}
+```
 
 Let’s attach it to the template of the component using property binding, as follows.
 
-https://gist.github.com/NishuGoel/e158556d9562354fac07f9e292116661
+```html
+<form (ngSubmit)='loginUser()' [formGroup]='loginForm' novalidate class="form">
+<input formControlName='email' type="text" class="form-control" placeholder="Enter Email" />
+<br />
+<input formControlName='password' type="password" class="form-control" placeholder="Enter Password" /> <br />
+ <input formControlName='age' type="number" class="form-control" placeholder="Enter Age" />
+<br />
+<button [disabled]='loginForm.invalid' class="btn btn-default">Login</button>
+ </form> 
+```
 
 This will display a reactive form like this.
 
@@ -31,11 +49,31 @@ i**mport { FormGroup, FormControl, Validators } from ‘@angular/forms’;**
 
 Suppose we use validation on the email and password, here’s how it is done.
 
-https://gist.github.com/NishuGoel/0a89e19a55993499d20bfe0bda8c5ba0
+```typescript
+ngOnInit() {
+ this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required, Validators.maxLength(8)]),
+     class: new FormControl(null)
+     });
+}
+```
 
 Inside **app.component.html**
 
-https://gist.github.com/NishuGoel/34c7a628245b8cb9d6db0c35583f0875
+```html
+<input formControlName='email' type="text" class="form-control" placeholder="Enter Email" />
+<div class="alert  alert-danger" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
+    Email is required
+</div>
+ <input formControlName='password' type="password" class="form-control" placeholder="Enter Password" />
+ <div class="alert  alert-danger" *ngIf=" !loginForm.get('password').valid && loginForm.get('email').touched">
+   Password is required and should less than or equal to 8 characters
+ </div>
+
+
+       
+```
 
 This displays:
 
@@ -56,7 +94,12 @@ class: new FormControl(null, [classValidator])
 
 On the Template, it goes like:
 
-https://gist.github.com/NishuGoel/a039faadd732645fb488827e8430ce4b
+```html
+<input formControlName='Class' type="number" class="form-control" placeholder="Enter Class" />
+ <div class="alert  alert-danger" *ngIf="loginForm.get('class').dirty && loginForm.get('class').errors && loginForm.get(‘class’).errors.classRange ">
+     Class should be in between 1 to 12 
+ </div>
+```
 
 This will display:
 

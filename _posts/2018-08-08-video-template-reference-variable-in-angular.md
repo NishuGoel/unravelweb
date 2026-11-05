@@ -11,7 +11,7 @@ This video talks about how to use a template reference variable in Angular to ma
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/eI1eo96aQSU?feature=oembed" title="How to use Template Reference Variable in Angular." width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=eI1eo96aQSU" data-id="eI1eo96aQSU" data-start="" style="background-image:url(https://i.ytimg.com/vi/eI1eo96aQSU/hqdefault.jpg)"><span>How to use Template Reference Variable in Angular.</span></a>
 
 
 

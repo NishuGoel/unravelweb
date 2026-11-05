@@ -29,29 +29,61 @@ c. Whenever user does activity on it, perform an action on the store.
 
 To set up Redux, we need to import few important classes.
 
-https://gist.github.com/NishuGoel/cfd65f7da0cd2e1418f5e4a4178f16f3
+```
+import {Component, provide} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {Store, createStore, StoreEnhancer} from 'redux';
+import {indexReducer} from './index-reducer';
+```
 
 In the above stated import statements, we have imported class ***Store*** and ***createStore*** which is a creator function inside ***Redux***. We have also imported a new class ***StoreEnhancer***and ***indexReducer*** from *index-reducer.ts* file that we will create.
 
 Let us now create our AppState as:
 
-https://gist.github.com/NishuGoel/83426e0aacd29a5096f4c41c294d7927
+```
+export interface AppState{
+  index: number;
+};
+```
 
 To define our reducer now that we need to integrate our Angular app with Redux,
 
-https://gist.github.com/NishuGoel/93f3aa25e1faa10011b52008128f2720
+```
+ import { INCREMENT, DECREMENT } from './index-action-creators';
+ let initialState: AppState = {index: 0 };
+ 
+ export const indexReducer: Reducer<AppState> =(state: AppState = initialState, action Action): AppState => {
+ switch(action.type){
+  case INCREMENT: return Object.assign({}, state, { counter: state.counter +1});
+  case DECREMENT: return Object.assign({}, state, { counter: state.counter -1});
+  default:
+  return state;
+ 
+ }
+ };
+```
 
 Here, we have our AppState as initialState, setting the counter to zero and two constants INCREMENT and DECREMENT exported by our action creators.
 
 Now, defining our action creators,
 
-https://gist.github.com/NishuGoel/e46c14a0c3ade1ccdb198f6286604fcb
+```
+import {Action, ActionCreator} from 'redux';
+
+export const INCREMENT: string = 'INCREMENT';
+export const increment: ActionCreator<Action> = () => ({type: INCREMENT});
+
+export const DECREMENT: string = 'DECREMENT';
+export const decrement: ActionCreator<Action> = () => ({type: DECREMENT});
+```
 
 Here, action creator functions return the type **ActionCreator<Action>**. **ActionCreator** is a generic class in Redux which is used to define functions that create actions.
 
 Finally, creating the Store,
 
-https://gist.github.com/NishuGoel/8f0d5de6f133febe09032a4c1c9f63e9
+```
+let store: Store<AppState> = createStore<AppState>(indexReducer);
+```
 
 Now that we have fully set up our Redux, let us go to our **IndexComponent** and provide it with the store that we create inside Redux.  
 Another thing to make sure of here is that since store is created using Redux, we need to make it accessible everywhere inside our application, and to do that we use dependency injection (DI), using the provide function.
@@ -68,7 +100,36 @@ Bootstrapping our app now,
 
 Let us have  a look at our **IndexComponent** now:
 
-https://gist.github.com/NishuGoel/bcfe5a06d8b16bebdf49a23eedacdb8a
+```
+@Component({
+  selector: 'index-component',
+  template: `
+    <p>The index value is {{index}}</p>
+    <p> <button (click) = "increment()"> Increment </button>
+    <button (click) = "increment()"> Increment </button> </p>
+    
+    export class IndexComponent{
+    index: number;
+    
+    
+    constructor(@Inject(AppStore) private store: Store<AppState>){
+      store.subscribe(() => this.readState());
+      this.readState();
+      }
+      readState(){
+      let state: AppState = this.store.getState() as AppState;
+      this.index =state.index;
+      }
+      increment(){
+        this.store.dispatch(IndexActions.increment());
+      }
+      decrement(){
+        this.store.dispatch(IndexActions.decrement());
+      }
+    }
+  
+  `
+```
 
 We can create more complex angular components with Redux.
 {% endraw %}

@@ -11,7 +11,20 @@ A ViewChild is a component, directive, or element as a part of a template. If we
 
 To understand this, suppose we have two components, a child and a parent one. Since the child component can be located inside the parent component, it can accessed as @ViewChild.
 
-https://gist.github.com/NishuGoel/156f5c7c7efd38c53bd0b6c8797d9c65
+```typescript
+export class AppComponent implements OnInit, AfterViewInit {
+    message: any;
+    @ViewChild(ChildComponent) chviewChild: ChildComponent;
+ 
+    ngAfterViewInit() {
+        console.log(this.chviewChild);
+    }
+ 
+    ngOnInit() {
+        this.message = 'Hello World !';
+    }
+}
+```
 
 In the above code, we imported @ViewChild decorator and then imported the lifecycle hook AfterViewInit and implemented it. Now, to change the property value, we can make use of the viewchild we just create like:
 
@@ -25,22 +38,57 @@ This will output the value **Changed value of View Child,** but will throw an 
 
 To handle this error, we use Change detection using ***ChangeDetectorRef***
 
-https://gist.github.com/NishuGoel/9b9844ae2255b65743b65502449175d9
+```typescript
+constructor(private cd: ChangeDetectorRef) {}
+ 
+ngAfterViewInit() {
+    console.log(this.chviewChild);
+    this.chviewChild.message = 'Changed value of View Child';
+    this.cd.detectChanges();
+}
+```
 
 Here, we have imported ***ChangeDetectorRef***from ‘@angular/core’ and injected it to the constructor. We have also called the method ***detectChanges()***.
 
 This was for one child element located inside the component template, but what in the case when we have multiple references to the child element?  
 That is when @ViewChildren comes into play.
 
-https://gist.github.com/NishuGoel/893dbf7e8a6d81fd8f3b9ac247230a67
+```typescript
+export class AppComponent implements OnInit {
+    messages: any;
+    ngOnInit() {
+        this.messages = this.getMessage(); 
+    }
+    getMessage() {
+        return [
+            'Hi',
+            'Hello',
+            'How are you?'
+        ];
+    }
+}
+```
 
 Modifying the template,
 
-https://gist.github.com/NishuGoel/d97c97ca24c62ef22f2d58246a056417
+```typescript
+@Component({
+    selector: 'app-root',
+    template: `
+  <div>
+  <app-child *ngFor="let i of messages" [message]='i'></app-child
+  </div>`
+})
+```
 
 Finally, marking the reference of ViewChildren with type QueryList,
 
-https://gist.github.com/NishuGoel/d5511ee247a738ae4022b4c5e0a1b8dc
+```typescript
+@ViewChildren(ChildComponent) chviewChildren: QueryList<ChildComponent>;
+ngAfterViewInit() {
+    console.log(this.chviewChildren);
+}
+```
 
 Now, we can update the value of the message property using Viewchildren inside the ngAfterViewinit() life cycle hook like this:
 
@@ -48,7 +96,39 @@ Now, we can update the value of the message property using Viewchildren inside t
 
 Let us look at the final code now:
 
-https://gist.github.com/NishuGoel/bcbb1f06e21d72b5b936006def00cd2b
+```
+import { Component, Input, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, ViewChildren } from "@angular/core";
+import { ChildComponent } from "./child.component";
+import { QueryList } from "@angular/core";
+
+@Component({
+  selector: 'app-root',
+  template:`
+  <app-child *ngFor = 'let i of message' [message] = 'i'></app-child>
+  `
+})
+export class AppComponent implements OnInit, AfterViewInit{
+  constructor(private cd: ChangeDetectorRef){}
+  ngAfterViewInit() {
+    console.log(this.chviewChildren);
+    this.chviewChildren.forEach((item) =>{item.message = "Updated Value"; });
+    this.cd.detectChanges();
+  }
+  message: any;
+  @ViewChildren(ChildComponent) chviewChildren: QueryList<ChildComponent>;
+  
+  ngOnInit(){
+    this.message = this.getMessage();
+  }
+  getMessage(){
+    return[
+      'Hi',
+      'Hello',
+      'How are you?
+    ];
+  }
+}
+```
 
 This gives us the output as:
 

@@ -23,29 +23,83 @@ Angular has many built-in pipes. In this article, we’ll see how to create a cu
 5) Use your pipe in the HTML using **‘|’**, which represents a pipe.  
 6) Also, add Custom arguments if you want to.
 
-https://gist.github.com/NishuGoel/a772bdf319b1eb19a551e8c3dfafd11f
+```typescript
+import { Pipe } from '@angular/core';
+
+@Pipe({
+  name: 'demo'
+})
+export class DemoPipe{}
+```
 
 Once we are done creating the Pipe class, we go to app.module.ts and register our pipe.Once we are done creating the Pipe class, we go to app.module.ts and register our pipe.
 
-https://gist.github.com/NishuGoel/aaa2edff8956e57eaf6aa68667c19044
+```typescript
+import { DemoPipe } from './demo.pipe';
+
+
+@NgModule({
+  declarations: [
+    DemoPipe
+  ],
+  imports: [
+    BrowserModule
+  ],
+```
 
 To finally put some logic behind the task of our custom pipe, we use PipeTransform.
 
-https://gist.github.com/NishuGoel/0036f43a5a2f475e8a317aead22f2aac
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'demo'
+})
+export class DemoPipe implements PipeTransform{
+    transform(n: number) {}
+}
+```
 
 So, to maintain the required contract to adhere to the standard structure, we use transform() method inside PipeTransform.
 
 Now, our motive is to convert some random number to a readable format of megabytes, and to do that, we put logic inside transform() as follows:
 
-https://gist.github.com/NishuGoel/e11e16baec4426e10d2e9d344a62476a
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'demo'
+})
+export class DemoPipe implements PipeTransform{
+    transform() : string {
+        return (n *1000).toFixed(2) + 'Kg';
+    }
+}
+```
 
 Now to use it in the HTML,
 
-https://gist.github.com/NishuGoel/41986f747f448224772d829c052e6f69
+```html
+<div>
+  <p>{{ demo.name }}</p>
+  <p>{{ demo.n | demo }}</p>
+</div>
+```
 
 To add a custom argument to your output, simply add the capability of extension to the Transform() method as follows.
 
-https://gist.github.com/NishuGoel/7f383091ea9916928b62d89d78cd796c
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'demo'
+})
+export class DemoPipe implements PipeTransform{
+    transform(n: number, extension: string = 'Kilograms') {
+        return (n * 1000).toFixed(2) + extension;
+    }
+}
+```
 
 We can also add multiple arguments which can be separated using ‘:’  
 For example,

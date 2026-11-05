@@ -11,7 +11,7 @@ In this video, you will learn about binding arrays to tables in Angular.
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/GVI3OMPixcg?feature=oembed" title="Binding Arrays to Tables in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=GVI3OMPixcg" data-id="GVI3OMPixcg" data-start="" style="background-image:url(https://i.ytimg.com/vi/GVI3OMPixcg/hqdefault.jpg)"><span>Binding Arrays to Tables in Angular</span></a>
 
 
 

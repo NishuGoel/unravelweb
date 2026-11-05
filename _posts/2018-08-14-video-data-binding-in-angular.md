@@ -11,7 +11,7 @@ Learn different ways of Data Binding in Angular.
 
 
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="563" src="https://www.youtube.com/embed/JkE1Wa07B3o?feature=oembed" title="How to do Data Binding in Angular" width="750"></iframe>
+<a class="yt" href="https://www.youtube.com/watch?v=JkE1Wa07B3o" data-id="JkE1Wa07B3o" data-start="" style="background-image:url(https://i.ytimg.com/vi/JkE1Wa07B3o/hqdefault.jpg)"><span>How to do Data Binding in Angular</span></a>
 
 
 

@@ -13,11 +13,42 @@ When we inject a service, the Angular injector needs to look at the Service prov
 
 To understand, let us create a service first.
 
-https://gist.github.com/NishuGoel/d4694056f6e60ff11dd300839d9ae3ab
+```typescript
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class HelloService{
+    sayHello(msg: String){
+        console.log(msg);
+    }
+
+}
+```
 
 Inside the component,
 
-https://gist.github.com/NishuGoel/aa8383a3db724a60f4da8922f16d19c6
+```typescript
+import { Component } from '@angular/core';
+import {HelloService} from './hello.service';
+
+
+@Component({
+  selector: 'app-root',
+  template:`
+  <input [(ngModel)]='msg' type='text'/>
+  <button (click)='apserv()'>Apply Service</button>
+  
+  `,
+  providers: [HelloService]
+})
+export class AppComponent {
+  constructor(private hservice: HelloService){}
+  msg: String;
+  apserv(){
+    this.hservice.sayHello(this.msg);
+  }
+}
+```
 
 Here, we imported the service, injected it and used it inside the component to log the hello message. Also, we provided the injected service inside the providers array. Let us look at the output.
 
@@ -52,11 +83,45 @@ The provide property here is used for locating the dependency value and register
 
 This is used to avoid creating two instances of the same Service. Inside the new service,
 
-https://gist.github.com/NishuGoel/df0781c50730aabb2fb989a702b7f830
+```typescript
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class NewService{
+    sayHello(msg: String){
+        console.log("Here is the message: " +msg);
+        document.write("New Service executed")
+    }
+
+} 
+```
 
 To use **useExisting inside the component now,**
 
-https://gist.github.com/NishuGoel/4e0b773b75b8b511f152fae487922466
+```typescript
+import { Component } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HelloService} from './hello.service';
+import {NewService} from './new.service';
+
+
+@Component({
+  selector: 'app-root',
+  template:` 
+  <input [(ngModel)]='msg' type='text'/>
+  <button class = 'btn btn-success' (click)='apserv()'>Apply Service</button>
+  
+  `,
+  providers: [NewService, {provide: HelloService, useExisting: NewService}]
+})
+export class AppComponent {
+  constructor(private hservice: HelloService){}
+  msg: String;
+  apserv(){
+    this.hservice.sayHello(this.msg);
+  }
+}
+```
 
 ![3](/assets/img/603095-3.png)
 
@@ -64,7 +129,42 @@ https://gist.github.com/NishuGoel/4e0b773b75b8b511f152fae487922466
 
 When we do not want to create an instance but pass the object directly, we use **useValue****.**
 
-https://gist.github.com/NishuGoel/2ae882a6608703aab5dfc2242a897f21
+```typescript
+import { Component } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HelloService} from './hello.service';
+import {NewService} from './new.service';
+
+
+@Component({
+  selector: 'app-root',
+  template:` 
+  <input [(ngModel)]='msg' type='text'/>
+  <button class = 'btn btn-success' (click)='apserv()'>Apply Service</button>
+  
+  `,
+
+  providers: [
+        {
+            provide: HelloService, useValue: {
+                sayHello: function (msg) {
+                    console.log('using useValue');
+                    document.write("using useValue");
+                }
+            }
+        }]
+
+
+})
+
+export class AppComponent {
+  constructor(private hservice: HelloService){}
+  msg: String;
+  apserv(){
+    this.hservice.sayHello(this.msg);
+  }
+}
+```
 
 Output:
 
@@ -74,7 +174,41 @@ Output:
 
 When the information about our dependency is dynamic, that is when **useFactory** comes into play.
 
-https://gist.github.com/NishuGoel/c7e7480a8561d08b4f43986db4ef4e27
+```typescript
+import { Component } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HelloService} from './hello.service';
+import {NewService} from './new.service';
+
+
+@Component({
+  selector: 'app-root',
+  template:` 
+  <input [(ngModel)]='msg' type='text'/>
+  <button class = 'btn btn-success' (click)='apserv()'>Apply Service</button>
+  
+  `,
+  //providers: [NewService, {provide: HelloService, useExisting: NewService}]
+  providers: [
+        {
+            provide: HelloService, useFactory: () => {
+                let i = 0;
+                if (i === 0)
+                    return new HelloService();
+                 else
+                    return new NewService();
+            }
+        }
+    ]
+})
+export class AppComponent {
+  constructor(private hservice: HelloService){}
+  msg: String;
+  apserv(){
+    this.hservice.sayHello(this.msg);
+  }
+}
+```
 
 Here, when the value of i equals 0, the output comes from the first service, i.e., HelloService, in any other case, the output comes from the second service, i.e., NewService.
 

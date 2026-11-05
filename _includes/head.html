@@ -6,5 +6,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <script>/* ponytail: lite YouTube — iframe only after click; no-JS falls back to the link */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.yt'); if (!a) return; e.preventDefault();
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + a.dataset.id + '?autoplay=1' + (a.dataset.start ? '&start=' + a.dataset.start : '');
+    f.title = a.textContent; f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true; f.className = 'yt';
+    a.replaceWith(f);
+  });
+  </script>
   {%- feed_meta -%}
 </head>

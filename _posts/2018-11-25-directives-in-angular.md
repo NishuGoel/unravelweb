@@ -38,7 +38,17 @@ Components are the most commonly used directives in Angular which when used as a
 
 Components have their own HTML known as template. An example of a component is listed below:
 
-https://gist.github.com/NishuGoel/221df2d972ba13dc26b0315b7f319323
+```
+
+
+@Component ({
+  selector: 'app-root',
+  template: `<h1>Hi I am an example of COmponents</h1>`
+})
+
+export class AppComponent{
+}
+```
 
 ### *Structural Directives*
 
@@ -46,13 +56,41 @@ Structural Directives are the directives that are used to modify the layout by a
 
 The most commonly used structural directives are **\*ngIf** and **\*ngFor**. Let us first see how \*ngIf works.
 
-https://gist.github.com/NishuGoel/1d15cdc9ff540844216541d0b9cf399e
+```
+@Component({
+  selector: 'app-root',
+  template: `<h2>Welcome</h2>
+  <p *ngIf="show">Show</p>
+  `
+})
+
+export class Component{
+  public show = true;
+}
+```
 
 In the above code, if the value of show is true, it will display Show on the browser, else nothing; just like an if statement.
 
 Similarly, an \*ngFor directive works like a for loop. Lets see the code in the listing below:
 
-https://gist.github.com/NishuGoel/86eb868afa26583863d6ceb73f0fc4bd
+```
+
+@Component({
+  selector: 'app-root',
+  template: `<h2>Welcome</h2>
+  <p *ngIf="show">Show</p>
+  <ul>
+    <li *ngFor = "let item of items">{{item}}</li>
+  </ul>
+  `
+})
+
+export class Component{
+  public show = true;
+  public item = 'pencil';
+  public items =['eraser', 'sharpener', 'pen', 'pencil', 'geometry'];
+}
+```
 
 There are many other structure directives like ngSwitch, ngSwitchWhen etc.
 
@@ -64,7 +102,20 @@ Now suppose, I have some text on my browser and I want to change the color and t
 
 Let us see an example of Attribute directives:
 
-https://gist.github.com/NishuGoel/94c11bfc45526ef6837cff32c61e3351
+```
+@Component({
+  selector: 'app-root',
+  template: `<h2>Welcome</h2>
+  <p [ngStyle]= "{'font-style': style, 'font-size': size}">My Text</p>
+  `
+})
+
+export class Component{
+  //public show = true;
+  public style = 'italic';
+  public size = '30px';
+}
+```
 
 This is one example of using Attribute Directives. As we discussed earlier, we can also create our own custom attribute directives.
 

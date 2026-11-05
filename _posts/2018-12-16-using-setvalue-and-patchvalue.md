@@ -13,21 +13,43 @@ If you are new to Reactive Forms, I would recommend you to go through this artic
 
 We use **setvalue** to set the value of every form control on the form. For example, here we have three form control in our form model. And now because we want to update the value of each one of these, we use setValue.
 
-https://gist.github.com/NishuGoel/1a9560e14952e58ae56f0446ad0b3de1
+```
+this.myForm.setValue({
+  name: 'Wilson',
+  city: 'Bangalore',
+  email: 'wilsondcousta@gmail.com'
+});
+```
 
 However, if we only want to set the subset of the values, we then use **patchValue**. In this example, we set only of the three values.
 
-https://gist.github.com/NishuGoel/2f2bc061482279b1ea22de793d8e84f8
+```
+this.myForm.setValue({
+  city: 'Gurgaon'
+});
+```
 
 Let us try our hands on it now!
 
 In the component template, Let us take a button to check the data like this:
 
-https://gist.github.com/NishuGoel/2f4e81a846bc2fde5b7c9b62f3c96360
+```
+<button type = "button" (click) = "checkData()"> 
+Check Data 
+</button>
+```
 
 Now let us take this method inside the component.ts file.
 
-https://gist.github.com/NishuGoel/932a0c47a2c6121415063bd04606c8e2
+```typescript
+checkData() : void {
+  this.myForm.setValue({
+    name: 'Wilson',
+   city: 'Bangalore',
+   email: 'wilsondcousta@gmail.com'
+  });
+}
+```
 
 Now when we check this in the browser, it populates the data in the browser as:
 
