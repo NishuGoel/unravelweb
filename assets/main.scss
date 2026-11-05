@@ -100,3 +100,8 @@ a.yt span { position: absolute; top: 14px; left: 18px; right: 18px; color: #fff;
 .not-found .code { font: 500 14px var(--mono); letter-spacing: .14em; color: var(--muted); }
 .not-found h1 { font-size: clamp(32px, 6vw, 48px); font-weight: 700; letter-spacing: -0.03em; margin: 8px 0 12px; }
 .not-found .actions { justify-content: center; }
+
+/* code blocks: one flat surface, no per-token boxes from minima/rouge */
+.highlighter-rouge .highlight, .highlight, pre, pre.highlight { background: var(--code) !important; border: 1px solid var(--line); }
+pre code, .highlight code, .highlight span { background: transparent !important; border: 0; padding: 0; }
+.highlight { border-radius: 8px; margin-bottom: 24px; } .highlight pre { border: 0; margin: 0; }
