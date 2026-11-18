@@ -11,6 +11,8 @@ I build products for the web, from the first idea to production, with a soft spo
 
 <p class="meta">Product Engineer · Cologne, Germany · 2022 – present</p>
 
+![The epilot team in the photobooth at the epilot Summit, July 2023](/assets/img/epilot-summit-2023.jpg)
+
 At [epilot](https://epilot.cloud), the energy XRM for energy suppliers and grid operators, I work on how customers set up and evolve their platform.
 
 - **[Blueprints](https://epilot.cloud/anwendungsbereiche/blueprints/) & Marketplace:** ready-made use cases customers install in minutes, and the engine that installs and syncs them from sandbox to production.
